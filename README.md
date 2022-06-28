@@ -25,3 +25,35 @@ For example, this tool is useful to post tfsec report for a terraform repository
     filename: "tfsec-output.txt"
     title: "tfsec report"
 ```
+
+### Github action example
+
+```yaml
+name: Terraform
+
+on: pull_request
+
+jobs:
+  tfsec:
+    name: TFSEC
+    runs-on: ubuntu-22.04
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+
+      - name: tfsec
+        id: tfsec_step
+        uses: aquasecurity/tfsec-action@v1.0.0
+        with:
+          additional_args: "--no-color --out tfsec-output.txt"
+          soft_fail: true
+
+      - uses: liveintent/github-pr-comments@v0.1.0
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          pr_number: ${{ github.event.number }}
+          filename: "tfsec-output.txt"
+          title: "TFsec report"
+```
