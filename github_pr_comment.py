@@ -61,6 +61,7 @@ class RequestManager:
         if response.status != 201:
             print(f'Response status: {response.status}')
             print(f'Response reason: {response.reason}')
+            raise Exception(f'Error {response.status}: {response.reason}')
 
 
 class GithubPrManager:
