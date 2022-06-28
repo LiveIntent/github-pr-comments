@@ -55,6 +55,7 @@ class RequestManager:
             "body": message
         }).encode('utf-8')
 
+        print(f"Post message url: {url}")
         response = self.http.request('POST', url, headers=self.headers, body=body_content)
 
         if response.status != 201:
@@ -82,7 +83,7 @@ class GithubPrManager:
                     self._delete_issue_comment(comment.get('id'))
 
         for message in self.split_content(content):
-            print(f'post my comment "{message}" to issue {issue_id}')
+            print(f'post the comment to issue {issue_id}')
             pre_start = ''
             pre_end = ''
             if bool(os.getenv('GITHUB_PR_COMMENT_PRE')) is True:
