@@ -52,6 +52,7 @@ jobs:
       - uses: liveintent/github-pr-comments@v0.1.0
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GITHUB_PR_COMMENT_PRE: true # Will insert the comment inside <pre> tags
         with:
           pr_number: ${{ github.event.number }}
           filename: "tfsec-output.txt"
