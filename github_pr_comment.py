@@ -58,10 +58,8 @@ class RequestManager:
         print(f"Post message url: {url}")
         response = self.http.request('POST', url, headers=self.headers, body=body_content)
 
-        if response.status != 201:
-            print(f'Response status: {response.status}')
-            print(f'Response reason: {response.reason}')
-            raise Exception(f'Error {response.status}: {response.reason}')
+        print(f'Response status: {response.status}')
+        print(f'Response reason: {response.reason}')
 
 
 class GithubPrManager:
