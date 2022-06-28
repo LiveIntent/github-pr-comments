@@ -53,7 +53,7 @@ class RequestManager:
 
         body_content = json.dumps({
             "body": message
-        }).encode('utf-8')
+        })
 
         print(f"Post message url: {url}")
         response = self.http.request('POST', url, headers=self.headers, body=body_content)
