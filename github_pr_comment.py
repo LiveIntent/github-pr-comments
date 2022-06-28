@@ -102,15 +102,15 @@ class GithubPrManager:
             self.request.post_comment(issue_id, comment_message)
 
     def split_content(self, content):
-
-        if len(content) < GithubPrManager.GITHUB_COMMENT_MAX_CHARS:
+        print(self.GITHUB_COMMENT_MAX_CHARS)
+        if len(content) < self.GITHUB_COMMENT_MAX_CHARS:
             return [content]
 
         split_content = []
-        while len(content) > GithubPrManager.GITHUB_COMMENT_MAX_CHARS:
-            sliced = content[:GithubPrManager.GITHUB_COMMENT_MAX_CHARS]
+        while len(content) > 0:
+            sliced = content[:self.GITHUB_COMMENT_MAX_CHARS]
             split_content.append(sliced)
-            content = content[GithubPrManager.GITHUB_COMMENT_MAX_CHARS+1:]
+            content = content[self.GITHUB_COMMENT_MAX_CHARS:]
 
         return split_content
 
