@@ -110,7 +110,7 @@ class GithubPrManager:
             split_content.append(sliced)
             content = content[241001:]
 
-        return [split_content]
+        return split_content
 
     def _get_issue_comments(self, issue_id):
         comments = self.request.get_comments(issue_id)
