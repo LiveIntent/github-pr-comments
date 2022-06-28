@@ -82,13 +82,19 @@ class GithubPrManager:
 
         for message in self._split_content(content):
             print(f'post my comment "{message}" to issue {issue_id}')
+            pre_start = ''
+            pre_end = ''
+            if os.getenv('GITHUB_PR_COMMENT_PRE') is True:
+                pre_start = '<pre>'
+                pre_end = '</pre>'
+
             comment_message = f"""
 {comment_title}
 {GithubPrManager.PR_COMMENT_MARKUP}
 <details>
   <summary>Click to expand!</summary>
   
-  {message}
+  {pre_start}{message}{pre_end}
 </details>
 
 """
