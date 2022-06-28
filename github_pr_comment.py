@@ -84,7 +84,7 @@ class GithubPrManager:
             print(f'post my comment "{message}" to issue {issue_id}')
             pre_start = ''
             pre_end = ''
-            if os.getenv('GITHUB_PR_COMMENT_PRE') is True:
+            if bool(os.getenv('GITHUB_PR_COMMENT_PRE')) is True:
                 pre_start = '<pre>'
                 pre_end = '</pre>'
 
