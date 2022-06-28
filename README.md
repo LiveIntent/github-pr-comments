@@ -17,7 +17,7 @@ For example, this tool is useful to post tfsec report for a terraform repository
 ## Example usage
 
 ```yaml
-- uses: kisphp-apps/github-pr-comments@pr-comments
+- uses: liveintent/github-pr-comments@main
   env:
     GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
   with:
